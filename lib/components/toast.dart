@@ -30,8 +30,8 @@ class CustomToast extends StatelessWidget {
             softWrap: true,
             maxLines: 2,
             style: TextStyle(
-              fontSize: Config.textSize(context, 4),
-              fontWeight: FontWeight.w400,
+              fontSize: Config.textSize(context, 4.2),
+              fontWeight: FontWeight.w500,
               color: Colors.white,
             ),
           ),

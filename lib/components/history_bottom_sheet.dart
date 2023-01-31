@@ -24,7 +24,7 @@ class HistoryBottomSheet extends StatelessWidget {
                   child: Text(
                     'History is empty',
                     style: TextStyle(
-                      fontSize: Config.textSize(context, 4),
+                      fontSize: Config.textSize(context, 4.2),
                     ),
                   ),
                 )
@@ -152,7 +152,7 @@ class HistoryBottomSheet extends StatelessWidget {
                                 title: Text(
                                   history[index].title!,
                                   style: TextStyle(
-                                    fontSize: Config.textSize(context, 4.5),
+                                    fontSize: Config.textSize(context, 4.2),
                                   ),
                                 ),
                                 subtitle: Text(

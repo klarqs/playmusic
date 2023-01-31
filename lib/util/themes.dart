@@ -14,7 +14,7 @@ final List kThemes = [
     backgroundColor: Colors.white,
     scaffoldBackgroundColor: Colors.grey[100],
     dividerColor: Colors.black45,
-    fontFamily: 'HelveticaNeue-Medium',
+    fontFamily: 'ProductSans-Regular',
     iconTheme: IconThemeData(
       color: Colors.black,
       opacity: 0.8,
@@ -38,7 +38,7 @@ final List kThemes = [
     backgroundColor: Color(0xFFF9D7E8),
     scaffoldBackgroundColor: Color(0xFFEBCBDC),
     dividerColor: Colors.black45,
-    fontFamily: 'HelveticaNeue-Medium',
+    fontFamily: 'ProductSans-Regular',
     iconTheme: IconThemeData(
       color: Colors.black,
       opacity: 0.8,
@@ -62,7 +62,7 @@ final List kThemes = [
     dialogBackgroundColor: Color(0xFFAECCF9),
     scaffoldBackgroundColor: Color(0xFFA5C1EB),
     dividerColor: Colors.black45,
-    fontFamily: 'HelveticaNeue-Medium',
+    fontFamily: 'ProductSans-Regular',
     iconTheme: IconThemeData(
       color: Colors.black,
       opacity: 0.8,
@@ -90,7 +90,7 @@ final List kThemes = [
     backgroundColor: Color(0xFF0B2A3D),
     scaffoldBackgroundColor: Color(0xFF031F32),
     dividerColor: Colors.white54,
-    fontFamily: 'HelveticaNeue-Medium',
+    fontFamily: 'ProductSans-Regular',
     sliderTheme: SliderThemeData(
       trackHeight: 1.0,
       thumbColor: Colors.deepOrange,
@@ -109,7 +109,7 @@ final List kThemes = [
     accentColor: Colors.pinkAccent,
     // cursorColor: Colors.pinkAccent,
     dividerColor: Colors.white54,
-    fontFamily: 'HelveticaNeue-Medium',
+    fontFamily: 'ProductSans-Regular',
     sliderTheme: SliderThemeData(
       trackHeight: 1.0,
       thumbColor: Colors.pinkAccent,
@@ -129,7 +129,7 @@ final List kThemes = [
     accentColor: Colors.deepOrange,
     // cursorColor: Colors.deepOrange,
     dividerColor: Colors.white54,
-    fontFamily: 'HelveticaNeue-Medium',
+    fontFamily: 'ProductSans-Regular',
     sliderTheme: SliderThemeData(
       trackHeight: 1.0,
       thumbColor: Colors.deepOrange,
@@ -149,7 +149,7 @@ final List kThemes = [
     accentColor: Colors.deepOrange,
     // cursorColor: Colors.deepOrange,
     dividerColor: Colors.white54,
-    fontFamily: 'HelveticaNeue-Medium',
+    fontFamily: 'ProductSans-Regular',
     sliderTheme: SliderThemeData(
         trackHeight: 1.0,
         thumbColor: Colors.deepOrange,
@@ -168,7 +168,7 @@ final List kThemes = [
     accentColor: Colors.pinkAccent,
     // cursorColor: Colors.pinkAccent,
     dividerColor: Colors.white54,
-    fontFamily: 'HelveticaNeue-Medium',
+    fontFamily: 'ProductSans-Regular',
     sliderTheme: SliderThemeData(
       trackHeight: 1.0,
       thumbColor: Colors.pinkAccent,
