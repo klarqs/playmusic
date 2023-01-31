@@ -51,10 +51,10 @@ class _PlayListState extends State<PlayList> {
       case ('All songs'):
         return Provider.of<ProviderClass>(context, listen: false).allSongs;
         break;
-      case ('Recently added'):
+      case ('Recently Added'):
         return Provider.of<ProviderClass>(context, listen: false).recentlyAdded;
         break;
-      case ('Recently played'):
+      case ('Recently Played'):
         return Provider.of<PlayListDB>(context, listen: false).recentList;
         break;
       default:

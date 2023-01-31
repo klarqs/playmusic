@@ -121,7 +121,7 @@ class _IdentifyState extends State<Identify>
                                     ? 'Tap to Cancel'
                                     : 'Tap to Listen',
                                 style: TextStyle(
-                                  fontSize: Config.textSize(context, 4.5),
+                                  fontSize: Config.textSize(context, 4)
                                 ),
                               ),
                             ),

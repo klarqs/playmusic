@@ -60,7 +60,7 @@ class _IdentifiedSongState extends State<IdentifiedSong> {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: Config.textSize(context, 5),
-                  fontWeight: FontWeight.w400,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
               Text(
@@ -96,7 +96,7 @@ class _IdentifiedSongState extends State<IdentifiedSong> {
                                 : Text(
                                     'Get lyrics',
                                     style: TextStyle(
-                                      fontSize: Config.textSize(context, 4),
+                                      fontSize: Config.textSize(context, 4.2),
                                     ),
                                   ),
                             onPressed: () async {

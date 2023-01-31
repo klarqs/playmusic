@@ -63,8 +63,8 @@ class _CreatePlayListState extends State<CreatePlayList> {
     Orientation orientation = MediaQuery.of(context).orientation;
     Size viewsSize = MediaQuery.of(context).size;
     TextStyle textStyle = TextStyle(
-      fontSize: Config.textSize(context, 4),
-      fontWeight: FontWeight.w400,
+      fontSize: Config.textSize(context, 4.2),
+      fontWeight: FontWeight.w500,
     );
 
     final keyboard = FocusScope.of(context);
