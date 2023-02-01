@@ -24,7 +24,7 @@ class CustomCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         margin: EdgeInsets.symmetric(
-          horizontal: 24,
+          horizontal: 18,
           vertical: 12,
         ),
         child: Row(
@@ -46,7 +46,7 @@ class CustomCard extends StatelessWidget {
                     '$label',
                     style: TextStyle(
                       height: 0,
-                      fontSize: Config.textSize(context, 4.2),
+                      fontSize: Config.textSize(context, 4),
                       fontWeight: FontWeight.w500,
                       color: Theme.of(context)
                           .unselectedWidgetColor
@@ -117,7 +117,7 @@ class CustomCard2 extends StatelessWidget {
                     label,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        fontSize: Config.textSize(context, 4.2),
+                        fontSize: Config.textSize(context, 4),
                         fontWeight: FontWeight.w500,
                         color: Theme.of(context)
                             .unselectedWidgetColor
@@ -129,7 +129,7 @@ class CustomCard2 extends StatelessWidget {
                         ? '$numOfSongs Song'
                         : '$numOfSongs Songs',
                     style: TextStyle(
-                      fontSize: Config.textSize(context, 3.2),
+                      fontSize: Config.textSize(context, 3),
                       fontWeight: FontWeight.w400,
                       color: Theme.of(context)
                           .unselectedWidgetColor

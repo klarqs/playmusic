@@ -20,35 +20,28 @@ class PlaylistOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextStyle customTextStyle = TextStyle(
-      fontSize: Config.textSize(context, 3.5),
+      fontSize: Config.textSize(context, 4),
       fontWeight: FontWeight.w500,
     );
     return Container(
-      height: 70,
+      height: 64,
       margin: EdgeInsets.fromLTRB(20, 0, 20, 10),
-      padding: EdgeInsets.only(left: 30, right: 10),
+      padding: EdgeInsets.only(left: 18, right: 10),
       decoration: BoxDecoration(
-          color: Theme.of(context).scaffoldBackgroundColor,
-          borderRadius: BorderRadius.circular(50),
-          boxShadow: [
-            BoxShadow(
-              color: Theme.of(context).splashColor,
-              offset: Offset(6, 6),
-              blurRadius: 10,
-            ),
-            BoxShadow(
-              color: Theme.of(context).backgroundColor,
-              offset: Offset(-6, -6),
-              blurRadius: 10,
-            ),
-          ]),
+        color: Theme.of(context).scaffoldBackgroundColor,
+        borderRadius: BorderRadius.circular(50),
+        border: Border.all(
+          color: Theme.of(context).iconTheme.color!.withOpacity(.2),
+          width: .8,
+        ),
+      ),
       child: Consumer<MarkSongs>(
         builder: (context, marker, child) {
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '${marker.markedSongs.length}\nselected',
+                '${marker.markedSongs.length} selected',
                 style: customTextStyle,
               ),
               // IconButton(

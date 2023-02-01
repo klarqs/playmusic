@@ -108,7 +108,7 @@ class _LibraryState extends State<Library> with WidgetsBindingObserver {
         //   title:  Text(
         //     'Library',
         //     style: TextStyle(
-        //       fontSize: Config.textSize(context, 6),
+        //       fontSize: Config.textSize(context, 5.2),
         //       fontWeight: FontWeight.w600,
         //       letterSpacing: .4,
         //     ),
@@ -135,9 +135,9 @@ class _LibraryState extends State<Library> with WidgetsBindingObserver {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only(
-                        left: 24,
+                        left: 18,
                         top: 16,
-                        right: 24,
+                        right: 18,
                         bottom: 20,
                       ),
                       child: Row(
@@ -146,8 +146,8 @@ class _LibraryState extends State<Library> with WidgetsBindingObserver {
                           Text(
                             'My Music',
                             style: TextStyle(
-                              fontSize: Config.textSize(context, 7.5),
-                              fontWeight: FontWeight.w600,
+                              fontSize: Config.textSize(context, 5.2),
+                              fontWeight: FontWeight.w900,
                               letterSpacing: 1,
                             ),
                           ),
@@ -159,7 +159,7 @@ class _LibraryState extends State<Library> with WidgetsBindingObserver {
                           //     Navigator.pushNamed(context, Identify.pageId);
                           //   },
                           // ),
-                          // SizedBox(width: 15),
+                          // SizedBox(width: 16),
                           CustomButton(
                             diameter: 12,
                             icon: "assets/svgs/setting-2.svg",
@@ -179,7 +179,7 @@ class _LibraryState extends State<Library> with WidgetsBindingObserver {
                     SizedBox(
                       width: Config.xMargin(context, 30),
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 24.0),
+                        padding: const EdgeInsets.only(left: 18.0),
                         child: Text(
                           'Your Downloads',
                           overflow: TextOverflow.ellipsis,
@@ -200,7 +200,7 @@ class _LibraryState extends State<Library> with WidgetsBindingObserver {
                       width: MediaQuery.of(context).size.width,
                       child: GridView.count(
                         physics: NeverScrollableScrollPhysics(),
-                        padding: EdgeInsets.symmetric(horizontal: 24),
+                        padding: EdgeInsets.symmetric(horizontal: 18),
                         scrollDirection: Axis.vertical,
                         crossAxisCount: 2,
                         childAspectRatio: 1.1,
@@ -211,7 +211,7 @@ class _LibraryState extends State<Library> with WidgetsBindingObserver {
                             builder: (context, provider, child) {
                               return GestureDetector(
                                 onTap: () {
-                                  openPlaylist(title: 'All songs');
+                                  openPlaylist(title: 'Songs');
                                 },
                                 child: CustomCard2(
                                   label: "Songs",
@@ -260,7 +260,7 @@ class _LibraryState extends State<Library> with WidgetsBindingObserver {
                     SizedBox(
                       width: Config.xMargin(context, 30),
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 24.0),
+                        padding: const EdgeInsets.only(left: 18.0),
                         child: Text(
                           'Your Activities',
                           overflow: TextOverflow.ellipsis,
@@ -338,7 +338,7 @@ class _LibraryState extends State<Library> with WidgetsBindingObserver {
                     //       width: MediaQuery.of(context).size.width,
                     //       child: ListView.builder(
                     //         physics: NeverScrollableScrollPhysics(),
-                    //         padding: EdgeInsets.symmetric(horizontal: 24),
+                    //         padding: EdgeInsets.symmetric(horizontal: 18),
                     //         scrollDirection: Axis.vertical,
                     //         itemCount: playListDB.playList.length,
                     //         itemBuilder: (_, index) {

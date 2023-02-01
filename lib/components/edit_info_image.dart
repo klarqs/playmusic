@@ -49,45 +49,59 @@ class _EditInfoImageState extends State<EditInfoImage> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(15),
+      borderRadius: BorderRadius.circular(16),
       onTap: _pickImage,
       child: Stack(
         children: [
           Container(
-            height: Config.yMargin(context, 15),
-            width: Config.yMargin(context, 15),
+            height: Config.yMargin(context, 16),
+            width: Config.yMargin(context, 16),
             decoration: BoxDecoration(
               border: Border.all(color: Theme.of(context).dividerColor),
-              borderRadius: BorderRadius.circular(15),
-              // image: _image == null && _pickedImage == null
-              //     ? null
-              //     : DecorationImage(
-              //         image: _pickedImage != null
-              //             ? FileImage(_pickedImage!)
-              //             : MemoryImage(_image),
-              //         fit: BoxFit.cover
-              //       ),
+              borderRadius: BorderRadius.circular(16),
             ),
+            child: _image == null && _pickedImage == null
+                ? null
+                : _pickedImage != null
+                    ? ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Image.file(
+                          _pickedImage!,
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                    : ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Image.memory(
+                          _image!,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
           ),
           Container(
             alignment: Alignment.bottomLeft,
-            height: Config.yMargin(context, 15),
-            width: Config.yMargin(context, 15),
+            height: Config.yMargin(context, 16),
+            width: Config.yMargin(context, 16),
             padding: EdgeInsets.only(left: 10, bottom: 10),
             decoration: BoxDecoration(
               color: Colors.black38,
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(12),
             ),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(Icons.image, color: Colors.white,),
+                Icon(
+                  Icons.image,
+                  color: Colors.white,
+                  size: 20,
+                ),
                 SizedBox(
-                  width: 10,
+                  width: 4,
                 ),
                 Text(
                   'Edit',
-                  style: TextStyle(color: Colors.white),
+                  style:
+                      TextStyle(color: Colors.white, height: 0, fontSize: 12),
                 )
               ],
             ),

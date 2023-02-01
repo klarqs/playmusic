@@ -49,7 +49,7 @@ class _IdentifyState extends State<Identify>
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(
-                        left: 15, top: 30, bottom: 10, right: 15),
+                        left: 16, top: 18, bottom: 10, right: 16),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -121,7 +121,7 @@ class _IdentifyState extends State<Identify>
                                     ? 'Tap to Cancel'
                                     : 'Tap to Listen',
                                 style: TextStyle(
-                                  fontSize: Config.textSize(context, 4)
+                                  fontSize: Config.textSize(context, 3.8)
                                 ),
                               ),
                             ),

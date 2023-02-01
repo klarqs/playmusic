@@ -14,7 +14,7 @@ final List kThemes = [
     backgroundColor: Colors.white,
     scaffoldBackgroundColor: Colors.grey[100],
     dividerColor: Colors.black45,
-    fontFamily: 'ProductSans-Regular',
+    fontFamily: 'ProductSans-Medium',
     iconTheme: IconThemeData(
       color: Colors.black,
       opacity: 0.8,
@@ -38,7 +38,7 @@ final List kThemes = [
     backgroundColor: Color(0xFFF9D7E8),
     scaffoldBackgroundColor: Color(0xFFEBCBDC),
     dividerColor: Colors.black45,
-    fontFamily: 'ProductSans-Regular',
+    fontFamily: 'ProductSans-Medium',
     iconTheme: IconThemeData(
       color: Colors.black,
       opacity: 0.8,
@@ -62,7 +62,7 @@ final List kThemes = [
     dialogBackgroundColor: Color(0xFFAECCF9),
     scaffoldBackgroundColor: Color(0xFFA5C1EB),
     dividerColor: Colors.black45,
-    fontFamily: 'ProductSans-Regular',
+    fontFamily: 'ProductSans-Medium',
     iconTheme: IconThemeData(
       color: Colors.black,
       opacity: 0.8,
@@ -90,7 +90,7 @@ final List kThemes = [
     backgroundColor: Color(0xFF0B2A3D),
     scaffoldBackgroundColor: Color(0xFF031F32),
     dividerColor: Colors.white54,
-    fontFamily: 'ProductSans-Regular',
+    fontFamily: 'ProductSans-Medium',
     sliderTheme: SliderThemeData(
       trackHeight: 1.0,
       thumbColor: Colors.deepOrange,
@@ -102,14 +102,14 @@ final List kThemes = [
   ),
   ThemeData(
     brightness: Brightness.dark,
-    backgroundColor: Color(0xFF31373D),
-    splashColor: Color(0xFF1A1E21),
-    scaffoldBackgroundColor: Color(0xFF282C31),
+    backgroundColor:  Color(0xFF1A1E21),
+    splashColor: Color(0xFF252525),
+    scaffoldBackgroundColor: Color(0xff131313),
     primaryColor: Colors.pinkAccent,
     accentColor: Colors.pinkAccent,
     // cursorColor: Colors.pinkAccent,
     dividerColor: Colors.white54,
-    fontFamily: 'ProductSans-Regular',
+    fontFamily: 'ProductSans-Medium',
     sliderTheme: SliderThemeData(
       trackHeight: 1.0,
       thumbColor: Colors.pinkAccent,
@@ -129,7 +129,7 @@ final List kThemes = [
     accentColor: Colors.deepOrange,
     // cursorColor: Colors.deepOrange,
     dividerColor: Colors.white54,
-    fontFamily: 'ProductSans-Regular',
+    fontFamily: 'ProductSans-Medium',
     sliderTheme: SliderThemeData(
       trackHeight: 1.0,
       thumbColor: Colors.deepOrange,
@@ -149,7 +149,7 @@ final List kThemes = [
     accentColor: Colors.deepOrange,
     // cursorColor: Colors.deepOrange,
     dividerColor: Colors.white54,
-    fontFamily: 'ProductSans-Regular',
+    fontFamily: 'ProductSans-Medium',
     sliderTheme: SliderThemeData(
         trackHeight: 1.0,
         thumbColor: Colors.deepOrange,
@@ -168,7 +168,7 @@ final List kThemes = [
     accentColor: Colors.pinkAccent,
     // cursorColor: Colors.pinkAccent,
     dividerColor: Colors.white54,
-    fontFamily: 'ProductSans-Regular',
+    fontFamily: 'ProductSans-Medium',
     sliderTheme: SliderThemeData(
       trackHeight: 1.0,
       thumbColor: Colors.pinkAccent,

@@ -87,9 +87,9 @@ flutter:
     - family: HelveticaNeue-Medium
       fonts:
         - asset: fonts/HelveticaNeue-Medium.ttf
-    - family: ProductSans-Regular
+    - family: ProductSans-Medium
       fonts:
-        - asset: fonts/ProductSans-Regular.ttf
+        - asset: fonts/ProductSans-Medium.ttf
 
 
 

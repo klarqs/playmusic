@@ -59,20 +59,24 @@ class _EditInfoState extends State<EditInfo> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(
-                      top: 30, bottom: 20, left: 20, right: 20),
+                    top: 18,
+                    bottom: 20,
+                    left: 18,
+                    right: 18,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       CustomButton(
                         diameter: 12,
-                        child: Icons.arrow_back,
+                        icon: "assets/svgs/chevron-left.svg",
                         onPressed: () async {
                           Navigator.pop(context);
                         },
                       ),
                       CustomButton(
                         diameter: 12,
-                        child: Icons.done,
+                        icon: 'assets/svgs/check.svg',
                         onPressed: () async {
                           final isValid = _formKey.currentState!.validate();
                           if (!isValid) {
@@ -100,13 +104,8 @@ class _EditInfoState extends State<EditInfo> {
                     ],
                   ),
                 ),
-                Divider(
-                  height: 0.0,
-                  thickness: 1.0,
-                  color: Theme.of(context).dividerColor,
-                ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 18),
                   child: Column(
                     children: [
                       SizedBox(height: Config.yMargin(context, 2)),
@@ -116,7 +115,7 @@ class _EditInfoState extends State<EditInfo> {
                         children: [
                           EditInfoImage(widget.song!.path!, _setImage),
                           SizedBox(
-                            width: 10,
+                            width: 16,
                           ),
                           Expanded(
                             child: Column(
@@ -184,20 +183,13 @@ class _EditInfoState extends State<EditInfo> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Theme.of(context).scaffoldBackgroundColor,
-                            boxShadow: <BoxShadow>[
-                              BoxShadow(
-                                color: Theme.of(context).splashColor,
-                                offset: Offset(5, 5),
-                                blurRadius: 10,
-                                spreadRadius: 1.0,
-                              ),
-                              BoxShadow(
-                                color: Theme.of(context).backgroundColor,
-                                offset: Offset(-5, -5),
-                                blurRadius: 10,
-                                spreadRadius: 1.0,
-                              ),
-                            ],
+                            border: Border.all(
+                              color: Theme.of(context)
+                                  .iconTheme
+                                  .color!
+                                  .withOpacity(.2),
+                              width: .8,
+                            ),
                           ),
                         ),
                       ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:hive/hive.dart';
 import 'package:playmusic/util/config.dart';
 import 'package:playmusic/providers/song_controller.dart';
 import 'package:provider/provider.dart';
@@ -26,37 +28,80 @@ class _NowPlayingDisplay extends State<NowPlayingDisplay> {
         List<Widget> display = [
           controller.useArt
               ? Container(
-                  margin: EdgeInsets.only(top: 30),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    // image: DecorationImage(
-                    //   image: controller.songArt == null
-                    //       ? AssetImage('images/album_art.jpg')
-                    //       : MemoryImage(controller.songArt),
-                    //   fit: BoxFit.cover,
-                    // ),
+                  margin: EdgeInsets.only(
+                    top: 48,
+                    left: 18,
+                    right: 18,
+                    // bottom: 48,
                   ),
-                  child: null,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                  child: controller.songArt == null
+                      ? CircleDisc(iconSize: 16)
+                      : ClipRRect(
+                          borderRadius: BorderRadius.circular(24),
+                          child: Image.memory(
+                            controller.songArt,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                 )
               : CircleDisc(iconSize: 16),
           Stack(
             children: [
               Container(
                 alignment: Alignment.center,
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                margin: EdgeInsets.only(top: 30),
+                padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * .12,
+                  vertical: 12,
+                ),
+                margin: EdgeInsets.only(
+                  top: 48,
+                  left: 18,
+                  right: 18,
+                  // bottom: 48,
+                ),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                        color: Theme.of(context).textTheme.bodyText1!.color!)),
+                  color: Theme.of(context)
+                      .textTheme
+                      .bodyText1!
+                      .color!
+                      .withOpacity(.1),
+                  borderRadius: BorderRadius.circular(24),
+                ),
                 child: controller.lyrics.isEmpty
                     ? Center(
                         child: TextButton(
-                          // splashColor: Theme.of(context).accentColor.withOpacity(0.5),
-                          // padding: EdgeInsets.all(20),
+                          style: TextButton.styleFrom(
+                            onSurface: Colors.transparent,
+                            surfaceTintColor: Colors.transparent,
+                            shadowColor: Colors.transparent,
+                          ),
                           child: _isLoading
-                              ? CircularProgressIndicator(strokeWidth: 2)
-                              : Text('Get lyrics'),
+                              ? CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: Theme.of(context).primaryColor)
+                              : Container(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 6,
+                                    horizontal: 12,
+                                  ),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color:
+                                              Theme.of(context).primaryColor),
+                                      borderRadius: BorderRadius.circular(18)),
+                                  child: Text(
+                                    'Get lyrics'.toUpperCase(),
+                                    style: TextStyle(
+                                      fontSize: Config.textSize(context, 3),
+                                      fontWeight: FontWeight.w400,
+                                      letterSpacing: .2,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                  ),
+                                ),
                           onPressed: () async {
                             setState(() {
                               _isLoading = true;
@@ -73,80 +118,83 @@ class _NowPlayingDisplay extends State<NowPlayingDisplay> {
                         ),
                       )
                     : ListWheelScrollView(
-                        itemExtent: 35,
+                        itemExtent: 50,
                         children: controller.lyrics
-                            .map((eachLine) => Text(
-                                  eachLine,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                ))
+                            .map(
+                              (eachLine) => Text(
+                                eachLine,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: Config.textSize(context, 4),
+                                  fontWeight: FontWeight.w400,
+                                  letterSpacing: .2,
+                                  height: 1.4,
+                                ),
+                              ),
+                            )
                             .toList(),
-                        diameterRatio: 1.0,
+                        diameterRatio: 10,
                       ),
               ),
-              if (controller.lyrics.isNotEmpty) ...[
-                Positioned(
-                  bottom: 10,
-                  right: 10,
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.save_alt_outlined,
-                      size: Config.textSize(context, 5),
-                    ),
-                    onPressed: () async => await controller.manageLyrics(
-                      context: context,
-                      delete: false,
-                    ),
-                  ),
-                ),
-                Positioned(
-                  bottom: 10,
-                  left: 10,
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.delete_outlined,
-                      size: Config.textSize(context, 5),
-                    ),
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            title: Text(
-                              'Delete lyrics for "${controller.nowPlaying?.title}"?',
-                              style: customTextStyle,
-                            ),
-                            actions: [
-                              TextButton(
-                                // textColor: Theme.of(context).accentColor,
-                                onPressed: () => Navigator.pop(context),
-                                child: Text(
-                                  'No',
-                                ),
-                              ),
-                              TextButton(
-                                // textColor: Theme.of(context).accentColor,
-                                onPressed: () async {
-                                  await controller.manageLyrics(
-                                    context: context,
-                                    delete: true,
-                                  );
-                                  Navigator.pop(context);
-                                },
-                                child: Text(
-                                  'Yes',
-                                ),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    },
-                  ),
-                )
-              ]
+              // if (controller.lyrics.isNotEmpty) ...[
+              //   Positioned(
+              //     bottom: 24,
+              //     right: 24,
+              //     child: IconButton(
+              //       icon: SvgPicture.asset("assets/svgs/download.svg",
+              //           color:
+              //               Theme.of(context).iconTheme.color!.withOpacity(1)),
+              //       onPressed: () async => await controller.manageLyrics(
+              //         context: context,
+              //         delete: false,
+              //       ),
+              //     ),
+              //   ),
+              //   Positioned(
+              //     bottom: 24,
+              //     left: 24,
+              //     child: IconButton(
+              //       icon: SvgPicture.asset("assets/svgs/trash.svg",
+              //           color:
+              //               Theme.of(context).iconTheme.color!.withOpacity(1)),
+              //       onPressed: () {
+              //         showDialog(
+              //           context: context,
+              //           builder: (context) {
+              //             return AlertDialog(
+              //               title: Text(
+              //                 'Delete lyrics for "${controller.nowPlaying?.title}"?',
+              //                 style: customTextStyle,
+              //               ),
+              //               actions: [
+              //                 TextButton(
+              //                   // textColor: Theme.of(context).accentColor,
+              //                   onPressed: () => Navigator.pop(context),
+              //                   child: Text(
+              //                     'No',
+              //                   ),
+              //                 ),
+              //                 TextButton(
+              //                   // textColor: Theme.of(context).accentColor,
+              //                   onPressed: () async {
+              //                     await controller.manageLyrics(
+              //                       context: context,
+              //                       delete: true,
+              //                     );
+              //                     Navigator.pop(context);
+              //                   },
+              //                   child: Text(
+              //                     'Yes',
+              //                   ),
+              //                 ),
+              //               ],
+              //             );
+              //           },
+              //         );
+              //       },
+              //     ),
+              //   )
+              // ]
             ],
           ),
         ];
@@ -163,13 +211,13 @@ class _NowPlayingDisplay extends State<NowPlayingDisplay> {
                   },
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 18),
               AnimatedSmoothIndicator(
                 count: display.length,
                 activeIndex: _pageIndex,
                 effect: WormEffect(
-                    dotWidth: 7,
-                    dotHeight: 7,
+                    dotWidth: 6,
+                    dotHeight: 6,
                     spacing: 10,
                     activeDotColor: Theme.of(context).accentColor),
               ),

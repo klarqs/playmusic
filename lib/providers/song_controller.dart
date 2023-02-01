@@ -160,8 +160,8 @@ class SongController extends ChangeNotifier {
     player!.pause();
   }
 
-  Future<void> seek(position) async {
-    await player!.seek(Duration(seconds: currentTime + int.parse(position)));
+  Future<void> seek(int position) async {
+    await player!.seek(Duration(seconds: currentTime! + position.toInt()));
   }
 
   Future<void> skip({bool next = false, bool prev = false}) async {

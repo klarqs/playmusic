@@ -96,7 +96,7 @@ class _IdentifiedSongState extends State<IdentifiedSong> {
                                 : Text(
                                     'Get lyrics',
                                     style: TextStyle(
-                                      fontSize: Config.textSize(context, 4.2),
+                                      fontSize: Config.textSize(context, 4),
                                     ),
                                   ),
                             onPressed: () async {

@@ -35,8 +35,9 @@ class _PlayingFromState extends State<PlayingFrom> {
                 ),
                 Text('Playing From\n${controller.playlistName}',
                     style: TextStyle(
-                      fontSize: Config.textSize(context, 5),
-                      fontWeight: FontWeight.w400,
+                      fontSize: Config.textSize(context, 5.8),
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: 1,
                     ),
                     textAlign: TextAlign.center),
                 Container(
@@ -47,7 +48,7 @@ class _PlayingFromState extends State<PlayingFrom> {
                     children: <Widget>[
                       CustomButton(
                         diameter: 12,
-                        child: Icons.repeat_one,
+                        icon: "assets/svgs/repeate-one.svg",
                         isToggled: controller.isRepeat,
                         onPressed: () async {
                           controller.settings(repeat: !controller.isRepeat);
@@ -69,7 +70,7 @@ class _PlayingFromState extends State<PlayingFrom> {
                           : SizedBox.shrink(),
                       CustomButton(
                         diameter: 12,
-                        child: Icons.shuffle,
+                        icon: "assets/svgs/shuffle.svg",
                         isToggled: controller.isShuffled,
                         onPressed: () {
                           controller.settings(shuffle: !controller.isShuffled);
@@ -104,9 +105,7 @@ class _PlayingFromState extends State<PlayingFrom> {
                               await controller
                                   .playlistControlOptions(nowPlaying!);
                             }
-                            controller.isPlaying
-                                ? padding = 10.0
-                                : padding = 0.0;
+                            controller.isPlaying ? padding = 12.0 : padding = 12.0;
                           },
                           selected: controller.nowPlaying!.path ==
                               songList[index].path,
@@ -115,8 +114,10 @@ class _PlayingFromState extends State<PlayingFrom> {
                             songList[index].title!,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                              fontSize: Config.textSize(context, 3.5),
-                              fontWeight: FontWeight.w400,
+                              fontSize: Config.textSize(context, 3.8),
+                              fontWeight: FontWeight.w600,
+                              color:
+                              Theme.of(context).unselectedWidgetColor.withOpacity(.9),
                             ),
                           ),
                           subtitle: Text(
@@ -124,17 +125,21 @@ class _PlayingFromState extends State<PlayingFrom> {
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               fontSize: Config.textSize(context, 3),
+                              fontWeight: FontWeight.w500,
+                              height: 1.7,
+                              color:
+                              Theme.of(context).unselectedWidgetColor.withOpacity(.5),
                             ),
                           ),
                           trailing: CustomButton(
                             diameter: 12,
                             isToggled: controller.nowPlaying!.path ==
                                 songList[index].path,
-                            child: controller.nowPlaying!.path ==
+                            icon: controller.nowPlaying!.path ==
                                         songList[index].path &&
                                     controller.isPlaying
-                                ? Icons.pause
-                                : Icons.play_arrow,
+                                ? "assets/svgs/pause.svg"
+                                : "assets/svgs/play.svg",
                             onPressed: () async {
                               nowPlaying = songList[index];
                               await controller
