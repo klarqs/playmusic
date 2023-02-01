@@ -31,15 +31,15 @@ class SongTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double padding = 10.0;
+    double padding = 8.0;
     return Consumer<SongController>(
       builder: (context, controller, child) {
         return AnimatedPadding(
           duration: Duration(milliseconds: 250),
           padding: controller.nowPlaying?.path == songList[index].path &&
                   controller.isPlaying
-              ? EdgeInsets.symmetric(vertical: padding)
-              : EdgeInsets.all(0),
+              ? EdgeInsets.only(top: padding, bottom: padding, left: 16)
+              : EdgeInsets.only(left: 16),
           child: Consumer<MarkSongs>(
             builder: (context, marker, child) {
               return ListTile(
@@ -60,7 +60,7 @@ class SongTile extends StatelessWidget {
                       ),
                     );
                     resetSearch();
-                    controller.isPlaying ? padding = 10.0 : padding = 0.0;
+                    controller.isPlaying ? padding = 8.0 : padding = 8.0;
                   }
                 },
                 onLongPress: () {
@@ -87,8 +87,10 @@ class SongTile extends StatelessWidget {
                   songList[index].title!,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    fontSize: Config.textSize(context, 3.5),
-                    fontWeight: FontWeight.w500,
+                    fontSize: Config.textSize(context, 3.8),
+                    fontWeight: FontWeight.w600,
+                    color:
+                        Theme.of(context).unselectedWidgetColor.withOpacity(.9),
                   ),
                 ),
                 subtitle: Text(
@@ -96,13 +98,17 @@ class SongTile extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: Config.textSize(context, 3),
+                    fontWeight: FontWeight.w500,
+                    height: 1.6,
+                    color:
+                        Theme.of(context).unselectedWidgetColor.withOpacity(.5),
                   ),
                 ),
-                trailing: CustomButton(
-                  child: controller.nowPlaying?.path == songList[index].path &&
+                trailing: CustomButton3(
+                  icon: controller.nowPlaying?.path == songList[index].path &&
                           controller.isPlaying
-                      ? Icons.pause
-                      : Icons.play_arrow,
+                      ? "assets/svgs/pause.svg"
+                      : "assets/svgs/play.svg",
                   diameter: 12,
                   isToggled:
                       controller.nowPlaying?.path == songList[index].path,

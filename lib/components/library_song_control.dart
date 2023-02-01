@@ -44,8 +44,8 @@ class LibrarySongControl extends StatelessWidget {
             },
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 24, vertical: 5),
-              color: Theme.of(context).unselectedWidgetColor.withOpacity(.2),
-              height: Config.yMargin(context, 10),
+              color: Theme.of(context).unselectedWidgetColor.withOpacity(.1),
+              height: Config.yMargin(context, 8),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -61,7 +61,7 @@ class LibrarySongControl extends StatelessWidget {
                             currentSong == null ? 'title' : currentSong!.title!,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                              fontSize: Config.textSize(context, 4.2),
+                              fontSize: Config.textSize(context, 4),
                               fontWeight: FontWeight.w600,
                               color: Theme.of(context)
                                   .unselectedWidgetColor
@@ -78,7 +78,7 @@ class LibrarySongControl extends StatelessWidget {
                                 : currentSong!.artist!,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                              fontSize: Config.textSize(context, 3.6),
+                              fontSize: Config.textSize(context, 3.8),
                               fontWeight: FontWeight.w500,
                               color: Theme.of(context)
                                   .unselectedWidgetColor

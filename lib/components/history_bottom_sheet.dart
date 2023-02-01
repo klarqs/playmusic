@@ -24,7 +24,7 @@ class HistoryBottomSheet extends StatelessWidget {
                   child: Text(
                     'History is empty',
                     style: TextStyle(
-                      fontSize: Config.textSize(context, 4.2),
+                      fontSize: Config.textSize(context, 4),
                     ),
                   ),
                 )
@@ -32,10 +32,10 @@ class HistoryBottomSheet extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: 40,
-                      child: Divider(thickness: 6, height: 15),
+                      child: Divider(thickness: 6, height: 16),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 15.0),
+                      padding: const EdgeInsets.only(left: 16.0),
                       child: Row(
                         children: [
                           Text(
@@ -128,7 +128,7 @@ class HistoryBottomSheet extends StatelessWidget {
                               background: Container(
                                 color: Theme.of(context).errorColor,
                                 margin: EdgeInsets.symmetric(
-                                    vertical: 5, horizontal: 15),
+                                    vertical: 5, horizontal: 16),
                                 padding: EdgeInsets.only(right: 10),
                                 child: Icon(
                                   Icons.delete,
@@ -152,7 +152,7 @@ class HistoryBottomSheet extends StatelessWidget {
                                 title: Text(
                                   history[index].title!,
                                   style: TextStyle(
-                                    fontSize: Config.textSize(context, 4.2),
+                                    fontSize: Config.textSize(context, 4),
                                   ),
                                 ),
                                 subtitle: Text(

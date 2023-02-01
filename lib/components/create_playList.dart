@@ -63,7 +63,7 @@ class _CreatePlayListState extends State<CreatePlayList> {
     Orientation orientation = MediaQuery.of(context).orientation;
     Size viewsSize = MediaQuery.of(context).size;
     TextStyle textStyle = TextStyle(
-      fontSize: Config.textSize(context, 4.2),
+      fontSize: Config.textSize(context, 4),
       fontWeight: FontWeight.w500,
     );
 
@@ -129,44 +129,47 @@ class _CreatePlayListState extends State<CreatePlayList> {
                               ),
                             )
                           : Expanded(
-                              child: ListView.builder(
-                                itemCount: playlistDB.playList.length,
-                                itemBuilder: (context, index) {
-                                  // create playlist is at index 0
-                                  return index > 0 &&
-                                          index < playlistDB.playList.length
-                                      ? TextButton(
-                                          onPressed: () async {
-                                            widget.songs.forEach((song) async {
-                                              await playlistDB.addToPlaylist(
-                                                playlistDB.playList[index]
-                                                    ['name'],
-                                                song,
-                                              );
-                                              if (playlistDB.playList[index]
-                                                      ['name'] ==
-                                                  'Favourites') {
-                                                Provider.of<SongController>(
-                                                        context,
-                                                        listen: false)
-                                                    .setFavourite(song);
-                                              }
-                                            });
-                                            playlistDB.showToast(
-                                                'Done', context);
-                                            Provider.of<MarkSongs>(context,
-                                                    listen: false)
-                                                .reset(notify: true);
-                                            Navigator.pop(context);
-                                          },
-                                          // index zero is create playlist
-                                          child: Text(
-                                            playlistDB.playList[index]['name'],
-                                            style: textStyle,
-                                          ),
-                                        )
-                                      : SizedBox.shrink();
-                                },
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 12.0),
+                                child: ListView.builder(
+                                  itemCount: playlistDB.playList.length,
+                                  itemBuilder: (context, index) {
+                                    // create playlist is at index 0
+                                    return index > 0 &&
+                                            index < playlistDB.playList.length
+                                        ? TextButton(
+                                            onPressed: () async {
+                                              widget.songs.forEach((song) async {
+                                                await playlistDB.addToPlaylist(
+                                                  playlistDB.playList[index]
+                                                      ['name'],
+                                                  song,
+                                                );
+                                                if (playlistDB.playList[index]
+                                                        ['name'] ==
+                                                    'Favourites') {
+                                                  Provider.of<SongController>(
+                                                          context,
+                                                          listen: false)
+                                                      .setFavourite(song);
+                                                }
+                                              });
+                                              playlistDB.showToast(
+                                                  'Done', context);
+                                              Provider.of<MarkSongs>(context,
+                                                      listen: false)
+                                                  .reset(notify: true);
+                                              Navigator.pop(context);
+                                            },
+                                            // index zero is create playlist
+                                            child: Text(
+                                              playlistDB.playList[index]['name'],
+                                              style: textStyle,
+                                            ),
+                                          )
+                                        : SizedBox.shrink();
+                                  },
+                                ),
                               ),
                             ),
                       Row(

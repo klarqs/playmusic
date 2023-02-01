@@ -23,8 +23,12 @@ class PopUpButton extends StatelessWidget {
   final bool canDelete;
   final Function dialogFunction;
 
-  PopupMenuItem _popupItem(
-      {required BuildContext context, required String text, required IconData icon, required Options value}) {
+  PopupMenuItem _popupItem({
+    required BuildContext context,
+    required String text,
+    required IconData icon,
+    required Options value,
+  }) {
     return PopupMenuItem(
       value: value,
       child: Row(

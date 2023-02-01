@@ -77,22 +77,22 @@ class _SplashScreenState extends State<SplashScreen>
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Opacity(
-                  opacity: _curvedAnimation!.value,
-                  child: SizedBox(
-                    width: Config.xMargin(context, _curvedAnimation!.value * 55),
-                    height:
-                        Config.yMargin(context, _curvedAnimation!.value * 25),
-                    child: Image(
-                      image: AssetImage('images/logo.png'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
+                // Opacity(
+                //   opacity: _curvedAnimation!.value,
+                //   child: SizedBox(
+                //     width: Config.xMargin(context, _curvedAnimation!.value * 55),
+                //     height:
+                //         Config.yMargin(context, _curvedAnimation!.value * 25),
+                //     child: Image(
+                //       image: AssetImage('images/logo.png'),
+                //       fit: BoxFit.cover,
+                //     ),
+                //   ),
+                // ),
                 Opacity(
                   opacity: _curvedAnimation!.value,
                   child: Text(
-                    'Vybe player',
+                    'Singr',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize:

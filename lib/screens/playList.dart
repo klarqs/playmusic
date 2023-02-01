@@ -48,7 +48,7 @@ class _PlayListState extends State<PlayList> {
 
   List<Song> getSongs() {
     switch (widget.playListName) {
-      case ('All songs'):
+      case ('Songs'):
         return Provider.of<ProviderClass>(context, listen: false).allSongs;
         break;
       case ('Recently Added'):
@@ -95,12 +95,16 @@ class _PlayListState extends State<PlayList> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.only(
-                        left: 15, top: 30, right: 20, bottom: 20),
+                      left: 18,
+                      top: 16,
+                      right: 18,
+                      bottom: 20,
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         CustomButton(
-                          child: Icons.arrow_back,
+                          icon: "assets/svgs/chevron-left.svg",
                           diameter: 12,
                           onPressed: () => Navigator.pop(context),
                         ),
@@ -111,7 +115,7 @@ class _PlayListState extends State<PlayList> {
                                   focusNode: focusNode,
                                   controller: input,
                                   decoration: InputDecoration(
-                                    hintText: 'search ${widget.playListName}',
+                                    hintText: 'Search ${widget.playListName}',
                                   ),
                                   onChanged: (String text) {
                                     search(text);
@@ -125,13 +129,16 @@ class _PlayListState extends State<PlayList> {
                                   textAlign: TextAlign.center,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
-                                    fontSize: Config.textSize(context, 5),
-                                    fontWeight: FontWeight.w400,
+                                    fontSize: Config.textSize(context, 5.2),
+                                    fontWeight: FontWeight.w900,
+                                    letterSpacing: 1,
                                   ),
                                 ),
                               ),
                         CustomButton(
-                          child: isSearching ? Icons.clear : Icons.search,
+                          icon: isSearching
+                              ? "assets/svgs/cancel_x.svg"
+                              : 'assets/svgs/search-normal.svg',
                           diameter: 12,
                           onPressed: () {
                             if (isSearching) {
@@ -152,10 +159,11 @@ class _PlayListState extends State<PlayList> {
                       ],
                     ),
                   ),
-                  Divider(
-                    height: 0.0,
-                    thickness: 1.0,
-                  ),
+                  // Divider(
+                  //   height: 0.0,
+                  //   thickness: 1.0,
+                  // ),
+                  // SizedBox(height: Config.yMargin(context, 1)),
                   Expanded(
                     child: RefreshIndicator(
                       backgroundColor: Theme.of(context).dialogBackgroundColor,
@@ -210,32 +218,27 @@ class _PlayListState extends State<PlayList> {
                                 });
                               },
                               child: Container(
-                                height: 70,
+                                height: 64,
                                 margin: EdgeInsets.fromLTRB(20, 0, 20, 10),
                                 decoration: BoxDecoration(
-                                    color: controller.isShuffled
-                                        ? Theme.of(context).accentColor
-                                        : Theme.of(context)
-                                            .scaffoldBackgroundColor,
-                                    borderRadius: BorderRadius.circular(50),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Theme.of(context).splashColor,
-                                        offset: Offset(6, 6),
-                                        blurRadius: 10,
-                                      ),
-                                      BoxShadow(
-                                        color:
-                                            Theme.of(context).backgroundColor,
-                                        offset: Offset(-6, -6),
-                                        blurRadius: 10,
-                                      ),
-                                    ]),
+                                  color: controller.isShuffled
+                                      ? Theme.of(context).accentColor
+                                      : Theme.of(context)
+                                          .scaffoldBackgroundColor,
+                                  borderRadius: BorderRadius.circular(50),
+                                  border: Border.all(
+                                    color: Theme.of(context)
+                                        .iconTheme
+                                        .color!
+                                        .withOpacity(.2),
+                                    width: .8,
+                                  ),
+                                ),
                                 child: Center(
                                   child: Text(
                                     'SHUFFLE',
                                     style: TextStyle(
-                                      fontSize: Config.textSize(context, 4),
+                                      fontSize: Config.textSize(context, 3.5),
                                       fontWeight: FontWeight.w500,
                                       color: controller.isShuffled
                                           ? Colors.white
