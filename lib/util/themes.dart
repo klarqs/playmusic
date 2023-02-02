@@ -101,13 +101,14 @@ final List kThemes = [
     ),
   ),
   ThemeData(
+    primarySwatch: Colors.pink,
     brightness: Brightness.dark,
-    backgroundColor:  Color(0xFF1A1E21),
-    splashColor: Color(0xFF252525),
-    scaffoldBackgroundColor: Color(0xff131313),
+    backgroundColor: Color(0xFF21262A),
+    splashColor: Color(0xFF1A1E21),
+    scaffoldBackgroundColor: Color(0xFF1D2024),
     primaryColor: Colors.pinkAccent,
     accentColor: Colors.pinkAccent,
-    // cursorColor: Colors.pinkAccent,
+    buttonColor: Colors.pinkAccent,
     dividerColor: Colors.white54,
     fontFamily: 'ProductSans-Medium',
     sliderTheme: SliderThemeData(

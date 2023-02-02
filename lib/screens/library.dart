@@ -7,6 +7,7 @@ import 'package:playmusic/components/custom_card.dart';
 import 'package:playmusic/components/library_bottom_sheet.dart';
 import 'package:playmusic/components/library_song_control.dart';
 import 'package:playmusic/providers/all_songs.dart';
+import 'package:playmusic/screens/playlist_home.dart';
 import 'package:playmusic/util/config.dart';
 import 'package:playmusic/providers/playList_database.dart';
 import 'package:playmusic/providers/song_controller.dart';
@@ -104,26 +105,6 @@ class _LibraryState extends State<Library> with WidgetsBindingObserver {
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        // appBar: AppBar(
-        //   title:  Text(
-        //     'Library',
-        //     style: TextStyle(
-        //       fontSize: Config.textSize(context, 5.2),
-        //       fontWeight: FontWeight.w600,
-        //       letterSpacing: .4,
-        //     ),
-        //   ),
-        //   centerTitle: false,
-        //   actions: [
-        //     CustomButton(
-        //       diameter: 12,
-        //       child: Icons.settings,
-        //       onPressed: () {
-        //         Navigator.pushNamed(context, Settings.pageId);
-        //       },
-        //     ),
-        //   ],
-        // ),
         body: SafeArea(
           child: Stack(
             children: <Widget>[
@@ -240,7 +221,12 @@ class _LibraryState extends State<Library> with WidgetsBindingObserver {
 
                               return GestureDetector(
                                 onTap: () {
-                                  openPlaylist(title: 'All songs');
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => PlayListHome(),
+                                    ),
+                                  );
                                 },
                                 child: CustomCard2(
                                   label: "Playlists",
@@ -282,7 +268,14 @@ class _LibraryState extends State<Library> with WidgetsBindingObserver {
                         physics: NeverScrollableScrollPhysics(),
                         children: [
                           CustomCard(
-                            onTap: () => {},
+                            onTap: () => {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => PlayListHome(),
+                                ),
+                              ),
+                            },
                             icon: "assets/svgs/music-filter.svg",
                             label: "Your Playlists",
                           ),
@@ -330,104 +323,6 @@ class _LibraryState extends State<Library> with WidgetsBindingObserver {
                         ],
                       ),
                     ),
-
-                    // Consumer<PlayListDB>(
-                    //   builder: (_, playListDB, child) {
-                    //     return SizedBox(
-                    //       height: 400,
-                    //       width: MediaQuery.of(context).size.width,
-                    //       child: ListView.builder(
-                    //         physics: NeverScrollableScrollPhysics(),
-                    //         padding: EdgeInsets.symmetric(horizontal: 18),
-                    //         scrollDirection: Axis.vertical,
-                    //         itemCount: playListDB.playList.length,
-                    //         itemBuilder: (_, index) {
-                    //           int songCount = index > 0
-                    //               ? playListDB.playList[index]['songs'].length
-                    //               : null;
-                    //           return GestureDetector(
-                    //             onTap: () {
-                    //               if (playListDB.playList[index]['name'] ==
-                    //                   'Create playlist') {
-                    //                 showDialog(
-                    //                   context: context,
-                    //                   builder: (context) {
-                    //                     return CreatePlayList(
-                    //                       createNewPlaylist: true,
-                    //                     );
-                    //                   },
-                    //                 );
-                    //               } else {
-                    //                 openPlaylist(
-                    //                     title: playListDB.playList[index]
-                    //                         ['name']);
-                    //               }
-                    //             },
-                    //             onLongPress: () {
-                    //               if (index > 1) {
-                    //                 showModalBottomSheet(
-                    //                   enableDrag: false,
-                    //                   context: context,
-                    //                   builder: (context) => LibraryBottomSheet(
-                    //                       playListDB.playList[index]['name']),
-                    //                 );
-                    //               }
-                    //             },
-                    //             child: CustomCard2(
-                    //               label: playListDB.playList[index]['name'],
-                    //               child: getPlaylistIcon(index),
-                    //               numOfSongs: songCount,
-                    //             ),
-                    //           );
-                    //         },
-                    //         // gridDelegate:
-                    //         //     SliverGridDelegateWithFixedCrossAxisCount(
-                    //         //   crossAxisCount: 2,
-                    //         //   childAspectRatio: 1.1,
-                    //         //   mainAxisSpacing: 12,
-                    //         //   crossAxisSpacing: 12,
-                    //         // ),
-                    //       ),
-                    //     );
-                    //   },
-                    // ),
-                    // Consumer<PlayListDB>(
-                    //   builder: (context, playlistDB, child) {
-                    //     return Container(
-                    //       height: Config.yMargin(context, 25),
-                    //       color: Colors.transparent,
-                    //       child: ListView.builder(
-                    //         padding: EdgeInsets.symmetric(horizontal: 12),
-                    //         scrollDirection: Axis.horizontal,
-                    //         itemCount: 2,
-                    //         itemBuilder: (context, index) {
-                    //           return GestureDetector(
-                    //             onTap: () {
-                    //               openPlaylist(
-                    //                   title: index == 0
-                    //                       ? 'Recently added'
-                    //                       : 'Recently played');
-                    //             },
-                    //             child: Padding(
-                    //               padding: const EdgeInsets.symmetric(
-                    //                   horizontal: 8, vertical: 12),
-                    //               child: CustomCard2(
-                    //                 height: 16,
-                    //                 width: 16,
-                    //                 label: index == 0
-                    //                     ? 'Recently added'
-                    //                     : 'Recently played',
-                    //                 child: index == 0
-                    //                     ? Icons.playlist_add
-                    //                     : Icons.playlist_play,
-                    //               ),
-                    //             ),
-                    //           );
-                    //         },
-                    //       ),
-                    //     );
-                    //   },
-                    // ),
                   ],
                 ),
               ),

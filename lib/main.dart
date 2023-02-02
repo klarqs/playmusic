@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:playmusic/providers/identify_controller.dart';
 import 'package:playmusic/screens/edit_info.dart';
 import 'package:playmusic/screens/identify.dart';
+import 'package:playmusic/screens/playlist_home.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -57,6 +58,7 @@ class MyApp extends StatelessWidget {
         PlayingFrom.pageId: (ctx) => PlayingFrom(),
         Identify.pageId: (ctx) => Identify(),
         Settings.pageId: (ctx) => Settings(),
+        PlayListHome.pageId: (ctx) => PlayListHome(),
       },
     );
   }

@@ -125,9 +125,11 @@ class CustomCard2 extends StatelessWidget {
                   ),
                   SizedBox(height: Config.yMargin(context, .6)),
                   Text(
-                    numOfSongs == 1 || numOfSongs == 0
-                        ? '$numOfSongs Song'
-                        : '$numOfSongs Songs',
+                    numOfSongs == null
+                        ? "Add a playlist"
+                        : numOfSongs == 1 || numOfSongs == 0
+                            ? '$numOfSongs Song'
+                            : '$numOfSongs Songs',
                     style: TextStyle(
                       fontSize: Config.textSize(context, 3),
                       fontWeight: FontWeight.w400,

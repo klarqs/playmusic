@@ -90,7 +90,7 @@ class _PlayListState extends State<PlayList> {
             Container(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
-              padding: const EdgeInsets.only(bottom: 80),
+              padding: const EdgeInsets.only(bottom: 72),
               child: Column(
                 children: <Widget>[
                   Padding(
@@ -110,7 +110,7 @@ class _PlayListState extends State<PlayList> {
                         ),
                         isSearching
                             ? SizedBox(
-                                width: Config.defaultSize(context, 55),
+                                width: Config.defaultSize(context, 60),
                                 child: TextField(
                                   focusNode: focusNode,
                                   controller: input,
@@ -159,11 +159,6 @@ class _PlayListState extends State<PlayList> {
                       ],
                     ),
                   ),
-                  // Divider(
-                  //   height: 0.0,
-                  //   thickness: 1.0,
-                  // ),
-                  // SizedBox(height: Config.yMargin(context, 1)),
                   Expanded(
                     child: RefreshIndicator(
                       backgroundColor: Theme.of(context).dialogBackgroundColor,
@@ -218,7 +213,7 @@ class _PlayListState extends State<PlayList> {
                                 });
                               },
                               child: Container(
-                                height: 64,
+                                height: 54,
                                 margin: EdgeInsets.fromLTRB(20, 0, 20, 10),
                                 decoration: BoxDecoration(
                                   color: controller.isShuffled
