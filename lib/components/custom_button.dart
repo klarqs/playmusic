@@ -61,12 +61,12 @@ class _CustomButtonState extends State<CustomButton>
           child: Transform.scale(
             scale: 1 - _controller!.value,
             child: Container(
-              height: Config.xMargin(context, 12),
-              width: Config.xMargin(context, 12),
+              height: Config.xMargin(context, 9.5),
+              width: Config.xMargin(context, 9.5),
               child: Center(
                 child: SvgPicture.asset(
                   widget.icon!,
-                  height: 22,
+                  height: 19,
                   color: Theme.of(context).iconTheme.color!.withOpacity(1),
                 ),
               ),

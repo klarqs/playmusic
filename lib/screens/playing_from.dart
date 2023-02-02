@@ -105,7 +105,9 @@ class _PlayingFromState extends State<PlayingFrom> {
                               await controller
                                   .playlistControlOptions(nowPlaying!);
                             }
-                            controller.isPlaying ? padding = 12.0 : padding = 12.0;
+                            controller.isPlaying
+                                ? padding = 12.0
+                                : padding = 12.0;
                           },
                           selected: controller.nowPlaying!.path ==
                               songList[index].path,
@@ -116,8 +118,8 @@ class _PlayingFromState extends State<PlayingFrom> {
                             style: TextStyle(
                               fontSize: Config.textSize(context, 3.8),
                               fontWeight: FontWeight.w600,
-                              color:
-                              Theme.of(context).unselectedWidgetColor.withOpacity(.9),
+                              // color:
+                              // Theme.of(context).unselectedWidgetColor.withOpacity(.9),
                             ),
                           ),
                           subtitle: Text(
@@ -127,8 +129,8 @@ class _PlayingFromState extends State<PlayingFrom> {
                               fontSize: Config.textSize(context, 3),
                               fontWeight: FontWeight.w500,
                               height: 1.7,
-                              color:
-                              Theme.of(context).unselectedWidgetColor.withOpacity(.5),
+                              // color:
+                              // Theme.of(context).unselectedWidgetColor.withOpacity(.5),
                             ),
                           ),
                           trailing: CustomButton(

@@ -89,8 +89,8 @@ class SongTile extends StatelessWidget {
                   style: TextStyle(
                     fontSize: Config.textSize(context, 3.8),
                     fontWeight: FontWeight.w600,
-                    color:
-                        Theme.of(context).unselectedWidgetColor.withOpacity(.9),
+                    // color:
+                    //     Theme.of(context).unselectedWidgetColor.withOpacity(.9),
                   ),
                 ),
                 subtitle: Text(
@@ -100,8 +100,8 @@ class SongTile extends StatelessWidget {
                     fontSize: Config.textSize(context, 3),
                     fontWeight: FontWeight.w500,
                     height: 1.6,
-                    color:
-                        Theme.of(context).unselectedWidgetColor.withOpacity(.5),
+                    // color:
+                    //     Theme.of(context).unselectedWidgetColor.withOpacity(.5),
                   ),
                 ),
                 trailing: CustomButton3(
@@ -116,7 +116,7 @@ class SongTile extends StatelessWidget {
                     controller.allSongs = allSongs;
                     controller.playlistName = playListName;
                     await controller.playlistControlOptions(songList[index]);
-                    controller.isPlaying ? padding = 10.0 : padding = 0.0;
+                    controller.isPlaying ? padding = 8.0 : padding = 0.0;
                   },
                 ),
               );

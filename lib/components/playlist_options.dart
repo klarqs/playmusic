@@ -24,7 +24,7 @@ class PlaylistOptions extends StatelessWidget {
       fontWeight: FontWeight.w500,
     );
     return Container(
-      height: 64,
+      height: 54,
       margin: EdgeInsets.fromLTRB(20, 0, 20, 10),
       padding: EdgeInsets.only(left: 18, right: 10),
       decoration: BoxDecoration(
