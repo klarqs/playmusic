@@ -69,17 +69,21 @@ class CustomCard extends StatelessWidget {
 }
 
 class CustomCard2 extends StatelessWidget {
-  CustomCard2(
-      {this.width = 0.0,
-      this.height = 0.0,
-      this.label = "",
-      this.numOfSongs = 0,
-      required this.child});
+  CustomCard2({
+    this.width = 0.0,
+    this.height = 0.0,
+    this.label = "",
+    this.numOfSongs = 0,
+    required this.child,
+    this.single = "Song",
+    this.plural = "Songs",
+  });
   final double width;
   final double height;
   final String label;
   final int numOfSongs;
   final String child;
+  final String single, plural;
 
   @override
   Widget build(BuildContext context) {
@@ -128,8 +132,8 @@ class CustomCard2 extends StatelessWidget {
                     numOfSongs == null
                         ? "Add a playlist"
                         : numOfSongs == 1 || numOfSongs == 0
-                            ? '$numOfSongs Song'
-                            : '$numOfSongs Songs',
+                            ? '$numOfSongs $single'
+                            : '$numOfSongs $plural',
                     style: TextStyle(
                       fontSize: Config.textSize(context, 3),
                       fontWeight: FontWeight.w400,

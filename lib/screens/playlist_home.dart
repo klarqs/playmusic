@@ -76,136 +76,133 @@ class _PlayListHomeState extends State<PlayListHome>
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        await MoveToBackground.moveTaskToBack();
-        return false;
-      },
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: SafeArea(
-          child: Stack(
-            children: <Widget>[
-              Container(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.only(bottom: 80),
-                child: ListView(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 18,
-                        top: 16,
-                        right: 18,
-                        bottom: 20,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          CustomButton(
-                            icon: "assets/svgs/chevron-left.svg",
-                            diameter: 12,
-                            onPressed: () => Navigator.pop(context),
-                          ),
-                          Text(
-                            'Playlists',
-                            style: TextStyle(
-                              fontSize: Config.textSize(context, 5.2),
-                              fontWeight: FontWeight.w900,
-                              letterSpacing: 1,
-                            ),
-                          ),
-                          CustomButton(
-                            diameter: 12,
-                            icon: "assets/svgs/setting-2.svg",
-                            onPressed: () {
-                              Navigator.pushNamed(context, Settings.pageId);
-                            },
-                          ),
-                        ],
-                      ),
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: SafeArea(
+        child: Stack(
+          children: <Widget>[
+            Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              margin: const EdgeInsets.only(bottom: 80),
+              child: ListView(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 18,
+                      top: 16,
+                      right: 18,
+                      bottom: 20,
                     ),
-                    // Divider(
-                    //   height: 0.0,
-                    //   thickness: 1.0,
-                    //   color: Theme.of(context).dividerColor,
-                    // ),
-                    SizedBox(height: Config.yMargin(context, 1)),
-                    Consumer<PlayListDB>(
-                      builder: (_, playListDB, child) {
-                        return SizedBox(
-                          height: 400,
-                          width: MediaQuery.of(context).size.width,
-                          child: GridView.builder(
-                            physics: NeverScrollableScrollPhysics(),
-                            padding: EdgeInsets.symmetric(horizontal: 18),
-                            scrollDirection: Axis.vertical,
-                            itemCount: playListDB.playList.length,
-                            itemBuilder: (_, index) {
-                              int songCount = index > 0
-                                  ? playListDB.playList[index]['songs'].length
-                                  : null;
-                              return GestureDetector(
-                                onTap: () {
-                                  if (playListDB.playList[index]['name'] ==
-                                      'Create playlist') {
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        return CreatePlayList(
-                                          createNewPlaylist: true,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        CustomButton(
+                          icon: "assets/svgs/chevron-left.svg",
+                          diameter: 12,
+                          onPressed: () => Navigator.pop(context),
+                        ),
+                        Text(
+                          'Playlists',
+                          style: TextStyle(
+                            fontSize: Config.textSize(context, 5.2),
+                            fontWeight: FontWeight.w900,
+                            letterSpacing: 1,
+                          ),
+                        ),
+                        CustomButton(
+                          diameter: 12,
+                          icon: "assets/svgs/setting-2.svg",
+                          onPressed: () {
+                            Navigator.pushNamed(context, Settings.pageId);
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  // Divider(
+                  //   height: 0.0,
+                  //   thickness: 1.0,
+                  //   color: Theme.of(context).dividerColor,
+                  // ),
+                  SizedBox(height: Config.yMargin(context, 1)),
+                  Consumer<PlayListDB>(
+                    builder: (_, playListDB, child) {
+                      return SizedBox(
+                        height: 400,
+                        width: MediaQuery.of(context).size.width,
+                        child: GridView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          padding: EdgeInsets.symmetric(horizontal: 18),
+                          scrollDirection: Axis.vertical,
+                          itemCount: playListDB.playList.length,
+                          itemBuilder: (_, index) {
+                            int songCount = index > 0
+                                ? playListDB.playList[index]['songs'].length
+                                : null;
+                            return playListDB.playList[index]['name'] ==
+                                    'Favourites'
+                                ? const SizedBox.shrink()
+                                : GestureDetector(
+                                    onTap: () {
+                                      if (playListDB.playList[index]['name'] ==
+                                          'Create playlist') {
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) {
+                                            return CreatePlayList(
+                                              createNewPlaylist: true,
+                                            );
+                                          },
                                         );
-                                      },
-                                    );
-                                  } else {
-                                    openPlaylist(
-                                        title: playListDB.playList[index]
-                                            ['name']);
-                                  }
-                                },
-                                onLongPress: () {
-                                  if (index > 1) {
-                                    showModalBottomSheet(
-                                      enableDrag: false,
-                                      context: context,
-                                      builder: (context) => LibraryBottomSheet(
-                                          playListDB.playList[index]['name']),
-                                    );
-                                  }
-                                },
-                                child: CustomCard2(
-                                        label: playListDB.playList[index]
-                                            ['name'],
-                                        child: playListDB.playList[index]
-                                                    ['name'] ==
-                                                'Create playlist'
-                                            ? "assets/svgs/plus.svg"
-                                            : playListDB.playList[index]
-                                                        ['name'] ==
-                                                    'Favourites'
-                                                ? "assets/svgs/heart.svg"
-                                                : "assets/svgs/music-filter-.svg",
-                                        numOfSongs: songCount,
-                                      ),
-                              );
-                            },
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              childAspectRatio: 1.1,
-                              mainAxisSpacing: 12,
-                              crossAxisSpacing: 12,
-                            ),
+                                      } else {
+                                        openPlaylist(
+                                            title: playListDB.playList[index]
+                                                ['name']);
+                                      }
+                                    },
+                                    onLongPress: () {
+                                      if (index > 1) {
+                                        showModalBottomSheet(
+                                          enableDrag: false,
+                                          context: context,
+                                          builder: (context) =>
+                                              LibraryBottomSheet(playListDB
+                                                  .playList[index]['name']),
+                                        );
+                                      }
+                                    },
+                                    child: CustomCard2(
+                                      label: playListDB.playList[index]['name'],
+                                      child: playListDB.playList[index]
+                                                  ['name'] ==
+                                              'Create playlist'
+                                          ? "assets/svgs/plus.svg"
+                                          : playListDB.playList[index]
+                                                      ['name'] ==
+                                                  'Favourites'
+                                              ? "assets/svgs/heart.svg"
+                                              : "assets/svgs/music-filter-.svg",
+                                      numOfSongs: songCount,
+                                    ),
+                                  );
+                          },
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 1.1,
+                            mainAxisSpacing: 12,
+                            crossAxisSpacing: 12,
                           ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
-              LibrarySongControl(),
-            ],
-          ),
+            ),
+            LibrarySongControl(),
+          ],
         ),
       ),
     );

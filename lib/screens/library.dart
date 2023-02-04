@@ -230,6 +230,8 @@ class _LibraryState extends State<Library> with WidgetsBindingObserver {
                                 },
                                 child: CustomCard2(
                                   label: "Playlists",
+                                  single: "Playlist",
+                                  plural: "Playlists",
                                   width: double.infinity,
                                   numOfSongs: playListTotal,
                                   child: "assets/svgs/music-filter-.svg",
